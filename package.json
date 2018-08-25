@@ -1,0 +1,23 @@
+{
+  "name": "data-visualization-d3",
+  "version": "1.0.0",
+  "description": "D3 Tutorials",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server public/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtanzim/data-visualization-d3.git"
+  },
+  "author": "Tanzim Mokammel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtanzim/data-visualization-d3/issues"
+  },
+  "homepage": "https://github.com/mtanzim/data-visualization-d3#readme",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  }
+}
