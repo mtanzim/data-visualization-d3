@@ -10,21 +10,39 @@
 <body>
 
   <div class="container">
-    <div class="jumbotron">
+    <div class="jumbotron bg-light">
       <h1>Introduction to D3</h1>
       <p>Tanzim Mokammel</p>
     </div>
-    <div  class="section  bg-light">
+
+<!--     <div  class="section  bg-light">
       <h1>First Demo</h1>
       <blockquote id="intro">
       </blockquote>
-    </div>
+    </div> -->
 
-    
     <div id="bar-chart" class="section bg-secondary mt-4">
       <h1>Bar Chart with D3.js</h1>
-      <svg class="bar-chart"></svg>
+      <svg id="svg0" class="bar-chart"></svg>
     </div>
+    
+    <div id="bar-chart-scales" class="section bg-light mt-4">
+      <div class="row">
+        <h1>Bar Chart Scaling with D3.js</h1>
+      </div>
+      <svg id="svg1" class="bar-chart"></svg>
+    </div>
+
+    <div id="bar-chart-axis" class="section bg-secondary mt-4">
+      <h1>Bar Chart with Axes with D3.js</h1>
+      <svg id="svg2" class="bar-chart"></svg>
+    </div>
+
+    <div class="section bg-light mt-4">
+      <h1>SVG Demo</h1>
+      <svg id="svg3" class="svg-demo"></svg>
+    </div>
+
   </div>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src="index.js"></script>
