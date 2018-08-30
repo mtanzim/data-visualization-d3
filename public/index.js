@@ -95,7 +95,7 @@ function generateSVG (id) {
     .attr("stroke-width", 5);
 
   var rect0 = svg.append("rect")
-    .attr("x", 150)
+    .attr("x", 150) 
     .attr("y", 100)
     .attr("width", 100)
     .attr("height", 100)
@@ -124,10 +124,63 @@ function generateSVG (id) {
 
 }
 
+function generatePie (id, data) {
+  var svgWidth = 500, 
+    svgHeight = 300, 
+    radius = Math.min(svgWidth, svgHeight) / 2;
+
+  var svg = d3.select(id)
+    .attr("width", svgWidth)
+    .attr("height", svgHeight);
+    // .attr("background-color", "yellow");
+
+  var g = svg.append("g")
+    .attr("transform", "translate(" + radius + "," + radius + ")");
+
+  var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+  // use built in d3 function to get values in percentages
+  var pie = d3.pie().value(function (d) {
+    return d.percentage;
+  });
+
+  var path = d3.arc()
+    .outerRadius(radius)
+    .innerRadius(0);
+
+  var arc = g.selectAll("arc")
+    .data(pie(data))
+    .enter()
+    .append("g");
+
+  arc.append("path")
+    .attr("d", path)
+    .attr("fill", function (d) { return color(d.data.percentage); });
+
+  var label = d3.arc()
+    .outerRadius(radius)
+    .innerRadius(0);
+
+  arc.append("text")
+    .attr("transform", function (d) {
+      return "translate(" + label.centroid(d) + ")";
+    })
+    .attr("text-anchor", "middle")
+    .text(function (d) { return d.data.platform + ": " + d.data.percentage + "%"; });
+
+}
+
 
 var datasetBarChart = [80, 100, 56, 120, 180, 30, 40, 120, 160];
 var scalingDatasetBarChart = [1, 4, 6, 7, 7, 7, 7, 7, 7, 7, 7];
+var pieData = [
+  { "platform": "Android", "percentage": 40.11 },
+  { "platform": "Windows", "percentage": 36.69 },
+  { "platform": "iOS", "percentage": 13.06 }
+];
+
 generateBarChart(datasetBarChart, '#svg0');
 generateBarChart(scalingDatasetBarChart, '#svg1', true);
 generateBarChart(datasetBarChart, '#svg2', false, true);
 generateSVG('#svg3');
+generatePie('#svg4', pieData);
